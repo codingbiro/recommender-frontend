@@ -27,10 +27,10 @@ export function Login() {
   const [serverErr, setServerErr] = useState(false);
   const refreshUser = useContext(UserContext).refreshUser;
 
-  const loginCompleted = (response: LoginResponse) => {
+  const loginCompleted = async (response: LoginResponse) => {
     if (response) {
       localStorage.setItem("token", response.loginUser.token);
-      refreshUser();
+      await refreshUser();
       setLoginSuc(true);
     }
   };
